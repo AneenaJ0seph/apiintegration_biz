@@ -1,4 +1,5 @@
 import 'package:apiintegration_biz/search.dart';
+import 'package:apiintegration_biz/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Search(),
+      home: SignUpPage(),
     );
   }
 }

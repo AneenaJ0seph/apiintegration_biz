@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async'; // Import for Timer
+import 'package:apiintegration_biz/productdetail.dart';
 import 'package:apiintegration_biz/productlist.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -13,11 +14,11 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List<Category> categories = []; // Holds all categories from the API
-  List<Product> filteredProducts = []; // Holds filtered products after search filtering
+  List<Product> filteredProducts = [];
+  List<Category> categories = [];
   final TextEditingController _searchController = TextEditingController();
-  bool isLoading = true; // Track API loading state
-  bool hasError = false; // Track API error state
+  bool isLoading = true;
+  bool hasError = false;
   bool isSearchEmpty = false; // To show empty search state
   Timer? _debounce; // Change _debounce to be nullable
 
@@ -30,7 +31,7 @@ class _SearchState extends State<Search> {
 
   // Fetch Categories from the API
   Future<void> fetchCategories() async {
-    const String url = 'https://btobapi-production.up.railway.app/api/categories/';
+    const String url = 'https://apib2b-production.up.railway.app/api/categories/';
     try {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
@@ -163,8 +164,8 @@ class _SearchState extends State<Search> {
                       ),
                     );
                   },
-                  child: Container(height: 100,
-                    width: 120, // Adjust the card width
+                  child: Container(height: 80,
+                    width: 100, // Adjust the card width
                     margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -179,11 +180,12 @@ class _SearchState extends State<Search> {
                       ],
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // Icon placeholder for category
                         Icon(
-                          Icons.category, // Replace with the actual icon based on the category
+                          Icons.health_and_safety_outlined, // Replace with the actual icon based on the category
                           color: index % 2 == 0 ? Colors.green : Colors.black, // Change color for variety
                           size: 40,
                         ),
@@ -233,7 +235,7 @@ class _SearchState extends State<Search> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductList(products: [product]),
+                        builder: (context) => ProductDetail(product: product), // Pass the correct product
                       ),
                     );
                   },
@@ -258,7 +260,7 @@ class _SearchState extends State<Search> {
         ),
         centerTitle: true,
         title: const Text(
-          "Search Products",
+          "Search",
           style: TextStyle(color: Colors.black),
         ),
       ),

@@ -44,9 +44,8 @@ class Product {
     return Product(
       id: json['id'] ?? 0, // Default to 0 if id is null
       productName: json['product_name'] ?? '', // Default to empty string if missing
-      productDetails: json['product_details'] ?? '', // Default to empty string if missing
-      image: json['image'] ?? '', // Default to empty string if missing
-      // Parse price correctly
+      productDetails: json['product_details'] ?? '',
+      image: json['image'] ?? '',
       price: json['price'] != null ? double.parse(json['price'].toString()) : 0.0,
       wholesalePrice: json['wholesale_price'] != null ? double.parse(json['wholesale_price'].toString()) : 0.0,
       minimumOrderQuantity: json['minimum_order_quantity'] ?? 0, // Default to 0 if missing

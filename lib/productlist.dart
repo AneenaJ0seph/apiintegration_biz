@@ -1,3 +1,4 @@
+import 'package:apiintegration_biz/productdetail.dart';
 import 'package:flutter/material.dart';
 import 'modelclass.dart';
 class ProductList extends StatelessWidget {
@@ -26,6 +27,14 @@ class ProductList extends StatelessWidget {
           return Card(
             margin: const EdgeInsets.all(8.0),
             child: ListTile(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetail(product: product),
+                  ),
+                );
+              },
               leading: Image.network(
                 product.image,
                 width: 50,
