@@ -29,7 +29,6 @@ class _SearchState extends State<Search> {
     _searchController.addListener(_onSearchChanged);
   }
 
-  // Fetch Categories from the API
   Future<void> fetchCategories() async {
     const String url = 'https://apib2b-production.up.railway.app/api/categories/';
     try {
@@ -160,6 +159,7 @@ class _SearchState extends State<Search> {
                       MaterialPageRoute(
                         builder: (context) => ProductList(
                           products: category.products,
+                          categoryName: category.label,
                         ),
                       ),
                     );

@@ -48,7 +48,7 @@ class Product {
       image: json['image'] ?? '',
       price: json['price'] != null ? double.parse(json['price'].toString()) : 0.0,
       wholesalePrice: json['wholesale_price'] != null ? double.parse(json['wholesale_price'].toString()) : 0.0,
-      minimumOrderQuantity: json['minimum_order_quantity'] ?? 0, // Default to 0 if missing
+      minimumOrderQuantity: json['minimum_order_quantity'] ?? 0,
     );
   }
 }
